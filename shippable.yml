@@ -5,11 +5,11 @@ jdk:
 
 branches:
   only:
-    - master
+    - github-beta
 
 env:
   global:
-    - secure: QxYtpWedaY1d/YE3/0TTpWglg3MusJkhKPf9GARLnnwj/iRp708bBDTI5lGe3kQ6LnaZgtRfnaYPzpcyDzQvQNFVwlL+jimKXV6L3zH5d/w6006cyVvdlenp8It/JxH+POSvg4T0J6k4m7Q+mV3opJQ/3rdZHlK1JPWmE83HpHqOwpXii2qYbO2di187DybbrOBezF3d9YPa0i5Oj6YoOjoFF+R9BzROE+dpCirFJpzhWHOzvap+nzEmjri3TNfkMkTrmNWTT1sZfpgkP4/eFW0RFWHunBtYWJo5jDoHIANxVZX6UQ3ZS939aOKNyiz5umvORoA3Fi3P/YwyvfyZFg==
+    - secure: pTctULZoZ0Ejip41hbaQq9HpfHE/TAIrcWZlZ2yDSQ4FDK4TllXTAZe/A6nWf+0mZ4JKMxYQcNaum52xtFUAmfyg+mpqJksedfZPcLmyev8AqWunUS1DSDi2MZ0po+ou4uUUYE/7ewT42HXyVSi/Rvx6MWsNqzv5k/sTQEq79FGXgnJ91JzWi/Mp1YzA5jm/yvd02OepLcqBXSyYr9QFqlI0xUuLj6Asenp2rT8Yq4wLQOIyQbBCdxaBKbni+tM4QdbfJrCEClK/MB/X0rVymO9eOA1TzoqxszldDbaPXzsum0cbLpPwPP4Ix3R+jLQxvjQ3fC7OM/QgpS0bfLXfoQ==
 
 build:
   ci:
@@ -25,7 +25,7 @@ integrations:
       type: docker
 
   notifications:
-    - integrationName: ttrahan-trigger-javahello
+    - integrationName: trigger-javahello-pipeline
       type: webhook
       payload:
         - versionName=$BRANCH.$BUILD_NUMBER
