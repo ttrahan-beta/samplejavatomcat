@@ -1,12 +1,10 @@
 jobs:
 
-# jobs for the box demo pipelines from CI thru TEST environment
+# jobs for pipelines from CI thru PROD environment
 
 ################################
 
-# add pipeline workflow for TEST
-
-# manifest gen
+# generate manifest
   - name: hello-man
     type: manifest
     steps:
@@ -15,24 +13,6 @@ jobs:
       - TASK: managed
     flags:
       - hello
-
-# deploy to TEST
-
-# TEST deployment to Amazon ECS
-  - name: hello-test-ecs
-    type: deploy
-    steps:
-      - IN: hello-man
-      - IN: hello-params
-        applyTo: hello-img
-      - IN: trigger-test-deploy
-      - IN: env-hello-test-ecs
-#       - IN: env-test-triton
-      - TASK: managed
-    flags:
-      - hello
-
-# ################################
 
 # # increment release version
 #   - name: hello-rel
@@ -43,3 +23,34 @@ jobs:
 #         trigger: true
 #       - TASK: managed
 #         bump: patch
+
+# TEST deployment to Amazon ECS
+  - name: hello-test-ecs
+    type: deploy
+    steps:
+      - IN: hello-man
+      - IN: hello-env-test-ecs
+      - IN: hello-params
+        applyTo: hello-img
+      - IN: trigger-test-deploy
+      - TASK: managed
+    flags:
+      - hello
+
+# PROD deployment - Amazon ECS
+  - name: hello-prod-ecs
+    type: deploy
+    steps:
+      # - IN: demo-rel
+      #   trigger: false
+      #   versionName: v1.0.2
+      - IN: hello-test-ecs
+        trigger: false
+      - IN: hello-env-prod-ecs
+      - IN: hello-params-prod
+        applyTo: hello-img
+      - IN: hello-scaler-prod
+      - IN: trigger-prod-deploy
+      - TASK: managed
+    flags:
+      - hello

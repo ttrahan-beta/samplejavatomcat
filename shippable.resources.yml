@@ -4,29 +4,7 @@ resources:
 
 ################################
 
-# add TEST environment
-
-# add TEST env - AWS cluster
-  - name: env-hello-test-ecs
-    type: cluster
-    integration: ttrahan-aws
-    pointer:
-      sourceName : "demo-shippable-ecs-test"
-      region: "us-east-1"
-    flags:
-      - hello
-
-################################
-
-# # set application version seed
-#   - name: hello-ver
-#     type: version
-#     seed:
-#       versionName: "1.0.0"
-
-################################
-
-# add visualizer resources to pipeline for CI
+# shared resources
 
 # Docker Image
   - name: hello-img
@@ -37,6 +15,29 @@ resources:
       isPull: false
     seed:
       versionName: github-beta.1
+    flags:
+      - hello
+
+# # set application version seed
+#   - name: hello-ver
+#     type: version
+#     seed:
+#       versionName: "1.0.0"
+#     flags:
+#       - hello
+
+
+################################
+
+# TEST resources
+
+# add TEST env - AWS cluster
+  - name: hello-env-test-ecs
+    type: cluster
+    integration: ttrahan-aws
+    pointer:
+      sourceName : "demo-shippable-ecs-test"
+      region: "us-east-1"
     flags:
       - hello
 
@@ -52,12 +53,51 @@ resources:
     flags:
       - hello
 
-
 # env vars for VISUALIZER
-  - name: hello-params
+  - name: hello-params-test
     type: params
     version:
       params:
         ENVIRONMENT: "test"
+    flags:
+      - hello
+
+################################
+
+# PROD resources
+
+# add PROD env - AWS cluster
+  - name: hello-env-prod-ecs
+    type: cluster
+    integration: ttrahan-aws
+    pointer:
+      sourceName : "demo-shippable-ecs-test"
+      region: "us-east-1"
+    flags:
+      - hello
+
+# PROD replica controller
+  - name: hello-scaler-prod
+    type: replicas
+    version:
+      count: 2
+    flags:
+      - hello
+
+# Docker Image Options for VISUALIZER
+  - name: hello-img-opts-prod
+    type: dockerOptions
+    version:
+      memory: 256
+      cpuShares: 512
+    flags:
+      - hello
+
+# env vars for VISUALIZER
+  - name: hello-params-prod
+    type: params
+    version:
+      params:
+        ENVIRONMENT: "prod"
     flags:
       - hello
