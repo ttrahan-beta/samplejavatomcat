@@ -36,7 +36,7 @@ resources:
       sourceName: ttrahan/javahelloworld
       isPull: false
     seed:
-      versionName: master.1
+      versionName: github-beta.1
     flags:
       - hello
 
