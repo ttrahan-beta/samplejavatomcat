@@ -71,7 +71,7 @@ resources:
     type: cluster
     integration: ttrahan-aws
     pointer:
-      sourceName : "demo-shippable-ecs-test"
+      sourceName : "demo-shippable-ecs"
       region: "us-east-1"
     flags:
       - hello
