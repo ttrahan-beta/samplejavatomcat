@@ -54,3 +54,21 @@ jobs:
       - TASK: managed
     flags:
       - hello
+
+# alternatl deployment - Google GKE
+  - name: hello-prod-gke
+    type: deploy
+    steps:
+      # - IN: demo-rel
+      #   trigger: false
+      #   versionName: v1.0.2
+      - IN: hello-test-ecs
+        switch: off
+      - IN: hello-env-prod-gke
+      - IN: hello-params-prod
+        applyTo: hello-img
+      - IN: hello-scaler-prod
+      - IN: trigger-deploy-prod
+      - TASK: managed
+    flags:
+      - hello

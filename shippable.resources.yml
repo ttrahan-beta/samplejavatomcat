@@ -45,8 +45,8 @@ resources:
   - name: hello-img-opts-test
     type: dockerOptions
     version:
-      memory: 128
-      cpuShares: 256
+      memory: 1000
+      cpuShares: 1000
       portMappings:
         - 8080:8080
       publishAllPorts : true
@@ -76,6 +76,16 @@ resources:
     flags:
       - hello
 
+# add PROD env - AWS cluster
+  - name: hello-env-gke
+    type: cluster
+    integration: ttrahan-gke
+    pointer:
+      sourceName : "demo-shippable-gke"
+      region: "us-east-1"
+    flags:
+      - hello
+
 # PROD replica controller
   - name: hello-scaler-prod
     type: replicas
@@ -88,8 +98,8 @@ resources:
   - name: hello-img-opts-prod
     type: dockerOptions
     version:
-      memory: 256
-      cpuShares: 512
+      memory: 1000
+      cpuShares: 1000
     flags:
       - hello
 
