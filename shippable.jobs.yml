@@ -64,7 +64,7 @@ jobs:
       #   versionName: v1.0.2
       - IN: hello-test-ecs
         switch: off
-      - IN: hello-env-prod-gke
+      - IN: hello-env-gke
       - IN: hello-params-prod
         applyTo: hello-img
       - IN: hello-scaler-prod
