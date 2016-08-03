@@ -15,8 +15,11 @@ public class HelloWorldController {
 			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
 		System.out.println("in controller");
 
+		String environment = System.getenv("ENVIRONMENT");
+
 		ModelAndView mv = new ModelAndView("helloworld");
 		mv.addObject("message", message);
+		mv.addObject("environment", environment);
     if (name == "") {
 			mv.addObject("name", "World");
 		} else {

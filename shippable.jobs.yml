@@ -45,7 +45,7 @@ jobs:
       #   trigger: false
       #   versionName: v1.0.2
       - IN: hello-test-ecs
-        trigger: false
+        switch: false
       - IN: hello-env-prod-ecs
       - IN: hello-params-prod
         applyTo: hello-img
