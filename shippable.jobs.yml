@@ -32,7 +32,7 @@ jobs:
       - IN: hello-env-test-ecs
       - IN: hello-params-test
         applyTo: hello-img
-      - IN: trigger-test-deploy
+      - IN: trigger-deploy-test
       - TASK: managed
     flags:
       - hello
@@ -50,7 +50,7 @@ jobs:
       - IN: hello-params-prod
         applyTo: hello-img
       - IN: hello-scaler-prod
-      - IN: trigger-prod-deploy
+      - IN: trigger-deploy-prod
       - TASK: managed
     flags:
       - hello

@@ -1,5 +1,11 @@
 triggers:
-  - name: trigger-test-deploy
+  - name: trigger-deploy-test
+    type: trigger
+    version:
+      message: 'testing trigger in test'
+    flags:
+      - hello
+  - name: trigger-deploy-prod
     type: trigger
     version:
       message: 'testing trigger in test'
