@@ -7,7 +7,7 @@ resources:
 # add TEST environment
 
 # add TEST env - AWS cluster
-  - name: env-test-ecs
+  - name: javahello-test-ecs
     type: cluster
     integration: ttrahan-aws
     pointer:

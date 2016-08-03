@@ -26,7 +26,7 @@ jobs:
       - IN: hello-params
         applyTo: hello-img
       - IN: trigger-test-deploy
-      - IN: env-test-ecs
+      - IN: hello-test-ecs
 #       - IN: env-test-triton
       - TASK: managed
     flags:
