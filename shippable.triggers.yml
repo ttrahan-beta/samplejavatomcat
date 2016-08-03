@@ -2,12 +2,12 @@ triggers:
   - name: trigger-deploy-test
     type: trigger
     version:
-      message: 'testing trigger in test'
+      message: 'testing trigger in test - 2'
     flags:
       - hello
   - name: trigger-deploy-prod
     type: trigger
     version:
-      message: 'testing trigger in test'
+      message: 'testing trigger in prod'
     flags:
       - hello
