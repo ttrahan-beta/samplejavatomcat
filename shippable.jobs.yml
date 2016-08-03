@@ -30,7 +30,7 @@ jobs:
     steps:
       - IN: hello-man
       - IN: hello-env-test-ecs
-      - IN: hello-params
+      - IN: hello-params-test
         applyTo: hello-img
       - IN: trigger-test-deploy
       - TASK: managed
